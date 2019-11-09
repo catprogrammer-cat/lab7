@@ -3,60 +3,87 @@
 //Integer
 //4×5
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
-void output_average_min_max(int x,int y){
-    int i,j;
-    int a[x][y];
-    int max;
-    max=a[0][0];
-    cout << "Input matrix 4x5:"<<endl;
-    for (i=0; i<x; i++){
-        for (j=0; j<y; j++){
-            cin>>a[i][j];
+
+void fill_randomly_array2d(int array2d[][5]){
+    srand ( time(0) );
+    for (int i=0; i<4; i++){
+        for (int j=0; j<5; j++){
+            array2d[i][j] = rand() % 100 + 1; 
         }
     }
-    // output array (a)
-     for(int i = 0; i<x; i++){
+}
+
+void print_array2d(int array2d[][5]) {
+    for(int i = 0; i<4; i++){
         cout << i << " : "; 
-        for(int j = 0; j<y; j++){
-            cout << a[i][j] << " ";
+        for(int j = 0; j<5; j++){
+            cout << array2d[i][j] << " ";
         }
         cout << ";" << endl;
     }
-    
-    for( int i=0; i<x; i++)
+}
+
+int return_max_array2d(int array2d[][5]) {
+    int max = array2d[0][0];
+    for( int i=0; i<4; i++)
     {
-        for(int j=0; j<y; j++)
+        for(int j=0; j<5; j++)
         {
-            if(max<a[i][j])
+            if(max < array2d[i][j])
             {
-                max=a[i][j];
+                max = array2d[i][j];
     
             }
     
         }
     
     }
-    
-    int min;
-    min=a[0][0];
-    
-    for(int i=0; i<x; i++)
+    return max;
+}
+
+int return_min_array2d(int array2d[][5]) {
+    int min = array2d[0][0];
+    for(int i=0; i<4; i++)
     {
-        for(int j=0; j<y; j++)
+        for(int j=0; j<5; j++)
         {
-            if(min>a[i][j])
+            if(min > array2d[i][j])
             {
-                min=a[i][j];
-            }
-        }
-    }
+                min = array2d[i][j];
     
-    cout << "average of min and max is " << (min+max)/2 << endl;
+            }
+    
+        }
+    
+    }
+    return min;
 }
 
 int main()
 {
-     output_average_min_max(4, 5);
+    // declare array2d and int max 
+    int array2d[4][5];
+    int max;
+    max = array2d[0][0];
+    // fill randomly array2d
+    fill_randomly_array2d(array2d);
+    // print randomly array2d
+    print_array2d(array2d);
+    
+    cout << "Max is " << return_max_array2d(array2d);
+    cout << "\nMin is " << return_min_array2d(array2d);
+    cout << "\naverage is " << (return_max_array2d(array2d)+return_min_array2d(array2d))/2;
 }
+
+// 0 : 78 58 89 48 58 ;                                                                                              
+// 1 : 9 78 29 89 84 ;                                                                                               
+// 2 : 25 95 6 84 64 ;                                                                                               
+// 3 : 47 27 3 12 5 ;                                                                                                
+// Max is 95                                                                                                         
+// Min is 3                                                                                                          
+// average is 49
+
