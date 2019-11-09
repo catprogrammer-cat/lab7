@@ -3,63 +3,68 @@
 //4×3
 //Double
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
-void output_vector(int x, int y){ // int x, int y
-    int i,j;
-    double a[4][3];
-    double x_a[3];
-    float sum;
-       
-        
-        
-    cout << "Input matrix "<< x << "x" << y << endl;
-    for (i=0; i<x; i++){
-        for (j=0; j<y; j++){
-            cin>>a[i][j];
-        }
-    }
-    // output array (a)
-    for(int i = 0; i<x; i++){
-        cout << i << " : "; 
-        for(int j = 0; j<y; j++){
-            cout << a[i][j] << " ";
-        }
-        cout << ";" << endl;
-    }
-    
-    ///////////////////
-    for (j=0; j<y; j++){ // i=0; i<6; i++
-        sum = 0;
-        for (i=0; i<x; i++){ // j=0; j<4; j++
-            if(a[i][j] > 0){
-                sum = sum + a[i][j]; 
+    void fill_randomly_array2d(double array2d[][3]){
+        srand ( time(0) );
+        for (int i=0; i<4; i++){
+            for (int j=0; j<3; j++){
+                array2d[i][j] = rand() % 100 + 1; 
             }
         }
-        x_a[j] = sum;
     }
-    //vector is 
-    cout << "Vector is ";
-    for (i=0; i<y; i++){
-        cout<< x_a[i]<<"\t";
+
+    void print_array2d(double array2d[][3]) {
+        for(int i = 0; i<4; i++){
+            cout << i << " : "; 
+            for(int j = 0; j<3; j++){
+                cout << array2d[i][j] << " ";
+            }
+            cout << ";" << endl;
+        }
     }
-    // int min = x[0];
-    // for (i=0; i<4; i++){
-    //     if(x[i] < min){
-    //         min = x[i];
-    //     }
-    // }
-}
+    
+    double* return_vector(double array2d[][3],double vector[]){
+        
+        for (int j=0; j<3; j++){ // i=0; i<6; i++
+            int sum = 0;
+            for (int i=0; i<4; i++){ // j=0; j<4; j++
+                if(array2d[i][j] > 0){
+                    sum += array2d[i][j]; 
+                }
+            }
+        vector[j] = sum;
+        return vector;
+        }
+    }
 
 int main()
 {
-    output_vector(4, 3);
-
+    //4×3//4×3//4×3//4×3//4×3
+    // declare
+    int i,j;
+    double array_2d[4][3];
+    double vector[3];
+    double sum;
+    
+    // fill randomly array2d
+    fill_randomly_array2d(array_2d);
+    // print array2d
+    print_array2d(array_2d);
+    // returned vector, now - vector_after    
+    double* vector_after = return_vector(array_2d,vector);
+    // print vector_after(vector)
+    for(int i=0; i<3; i++){
+        cout << "[" << vector_after[i] << "]";
+    }
+    
     return 0;
 }
-// 0 : 3 4 5 ;                                                                                                                                                               
-// 1 : 4 3 4 ;                                                                                                                                                               
-// 2 : 5 4 3 ;                                                                                                                                                               
-// 3 : 4 4 2 ;                                                                                                                                                               
-Vector is 16    15      14
+// 0 : 29 4 92 ;                                                                                                   
+// 1 : 3 48 64 ;                                                                                                   
+// 2 : 50 18 95 ;                                                                                                  
+// 3 : 97 70 20 ;                                                                                                  
+// [179][6.92932e-310][4.94066e-324]
