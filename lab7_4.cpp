@@ -7,58 +7,6 @@
 #include <ctime>
 
 using namespace std;
-
-
-
-void output_quantity_odd_and_replace_corner_of_quantity_odd(int x, int y){
-        int i,j;
-        int a[x][y];
-       
-        
-        
-        cout << "Input matrix "<< x << "x" << y << endl;
-        for (i=0; i<x; i++){
-            for (j=0; j<y; j++){
-                cin>>a[i][j];
-            }
-        }
-        // output array (a)
-         for(int i = 0; i<x; i++){
-            cout << i << " : "; 
-            for(int j = 0; j<y; j++){
-                cout << a[i][j] << " ";
-            }
-            cout << ";" << endl;
-        }
-        int quantity_odd = 0;
-        for( int i=0; i<x; i++)
-        {
-            for(int j=0; j<y; j++)
-            {
-                if(a[i][j] % 2 != 0)
-                {
-                    quantity_odd++;
-                }
-            }
-        }
-        cout << "quantity_odd is " << quantity_odd << endl;
-        
-        //replace corner of (quantity_odd)
-        
-         a[0][0] = quantity_odd;
-         a[0][y-1] = quantity_odd;
-         a[x-1][0] = quantity_odd;
-         a[x-1][y-1] = quantity_odd;
-        
-         // output array (a)
-         for(int i = 0; i<x; i++){
-            cout << i << " : "; 
-            for(int j = 0; j<y; j++){
-                cout << a[i][j] << " ";
-            }
-            cout << ";" << endl;
-        }
-    }
     
     //3×5
     void fill_randomly_array2d(int array2d[][5]){
