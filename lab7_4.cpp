@@ -53,11 +53,11 @@ int main()
     print_array2d(array2d);
 
     cout << "Sum of odd element is " << sum_odd_element_array2d(array2d) << endl;
-    
-    array2d[0][0] = sum_odd_element_array2d(array2d);
-    array2d[0][4] = sum_odd_element_array2d(array2d);
-    array2d[2][0] = sum_odd_element_array2d(array2d);
-    array2d[2][4] = sum_odd_element_array2d(array2d);
+    int change = sum_odd_element_array2d(array2d);
+    array2d[0][0] = change;
+    array2d[0][4] = change;
+    array2d[2][0] = change;
+    array2d[2][4] = change;
     
     print_array2d(array2d);
     
