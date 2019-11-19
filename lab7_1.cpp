@@ -10,9 +10,10 @@ int main()
     //declare array 'a[3][5]'
     int a[3][5];
     //input entire array 'a[3][5]'
+    srand(time(0));
     for(int i = 0; i<=2; i++){
         for(int j = 0; j<=4; j++){
-            cin >> a[i][j];
+            a[i][j] = rand()%20-10;
         } 
     }
     //output entire array 'a[3][5]' 
