@@ -3,8 +3,7 @@
 //4×3
 //Double
 #include <iostream>
-#include <cstdlib>
-#include <ctime>
+
 
 using namespace std;
 
@@ -28,17 +27,20 @@ using namespace std;
     }
     
     double* return_vector(double array2d[][3],double vector[]){
-        
-        for (int j=0; j<3; j++){ // i=0; i<6; i++
-            int sum = 0;
-            for (int i=0; i<4; i++){ // j=0; j<4; j++
+        double sum;
+        for (int i=0; i<4; i++){ // i=0; i<6; i++
+            sum = 0;
+            for (int j=0; j<3; j++){ // j=0; j<4; j++
                 if(array2d[i][j] > 0){
                     sum += array2d[i][j]; 
                 }
             }
-        vector[j] = sum;
-        return vector;
+            vector[i] = sum;
+            sum = 0;
         }
+
+        return vector;
+        
     }
 
 int main()
@@ -47,8 +49,8 @@ int main()
     // declare
     int i,j;
     double array_2d[4][3];
-    double vector[3];
-    double sum;
+    double vector[4];
+    //double sum;
     
     // fill randomly array2d
     fill_randomly_array2d(array_2d);
@@ -57,14 +59,14 @@ int main()
     // returned vector, now - vector_after    
     double* vector_after = return_vector(array_2d,vector);
     // print vector_after(vector)
-    for(int i=0; i<3; i++){
+    for(int i=0; i<4; i++){
         cout << "[" << vector_after[i] << "]";
     }
     
     return 0;
 }
-// 0 : 29 4 92 ;                                                                                                   
-// 1 : 3 48 64 ;                                                                                                   
-// 2 : 50 18 95 ;                                                                                                  
-// 3 : 97 70 20 ;                                                                                                  
-// [179][6.92932e-310][4.94066e-324]
+// 0 : 44 43 30 ;                                                                                                                       
+// 1 : 47 82 16 ;                                                                                                                       
+// 2 : 27 79 22 ;                                                                                                                       
+// 3 : 11 53 11 ;                                                                                                                       
+// [117][145][128][75]
